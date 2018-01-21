@@ -1,0 +1,11 @@
+npo1,http://icecast.omroep.nl/radio1-bb-mp3
+npo2,http://icecast.omroep.nl/radio2-bb-mp3
+npo3,http://icecast.omroep.nl/radio3-bb-mp3
+npo4,http://icecast.omroep.nl/radio4-bb-mp3
+npo5,http://icecast.omroep.nl/radio5-bb-mp3
+funx,http://icecast.omroep.nl/funx-bb-mp3
+qmusic,http://icecast-qmusic.cdp.triple-it.nl/Qmusic_nl_live_96.mp3
+radio10,http://17873.live.streamtheworld.com/RADIO10.mp3
+slam,http://538hls.lswcdn.triple-it.nl/content/slamfm/1510961901-4-48000-192000-index.m3u8
+bnr,http://icecast.omroep.nl/3fm-sb-mp3
+538,http://playerservices.streamtheworld.com/api/livestream-redirect/RADIO538.mp3

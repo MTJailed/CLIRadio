@@ -1,0 +1,30 @@
+#!/bin/bash
+RADIOFILE='radio.lst'
+if [[ -e $RADIOFILE ]]; then
+	RADIOS="$(cat $RADIOFILE)"
+	for RADIO in $RADIOS; do
+		IFS=', ' read -r -a RADIOOPT <<< "$RADIO"
+		ARG="${RADIOOPT[0]}"
+		ARGS="$ARGS $ARG"
+		URL="${RADIOOPT[1]}"
+		if [[ "$1" == "$ARG" ]]; then
+			mplayer "$URL" > /dev/null 2>&1
+		fi
+	done
+	if [[ "$1" == "$ARG" ]]; then
+                        mplayer "$URL" > /dev/null 2>&1
+        else
+		echo "Usage: $0 [radioname]"
+		echo "Radios: "
+		echo -e "\t$ARGS"
+	fi
+else
+	echo "radio.lst is missing, creating one..."
+	echo '' > radio.lst
+	echo "Please add your radio stations to radio.lst"
+	echo "Use the format:"
+	echo -e "\tname,url"
+	echo -e "\tname,url"
+	echo " "
+fi
+
