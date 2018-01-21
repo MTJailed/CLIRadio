@@ -23,9 +23,7 @@ if [[ -e $RADIOFILE ]]; then
 			exit 1;
 		fi
 	done
-	if [[ "$1" == "$ARG" ]]; then
-                        mplayer "$URL" > /dev/null 2>&1
-        else
+	if [[ "$1" == "" ]]; then
 		echo "Usage: $0 [radioname]"
 		echo "Radios: "
 		echo -e "\t$ARGS"
