@@ -26,7 +26,28 @@ if [[ -e $RADIOFILE ]]; then
 	if [[ "$1" == "" ]]; then
 		echo "Usage: $0 [radioname]"
 		echo "Radios: "
-		echo -e "\t$ARGS"
+		CATEGORIES=""
+		for RADIO in $RADIOS;do
+                        IFS=', ' read -r -a ROPT <<< "$RADIO"
+                       	if [[ "$CATEGORIES" != *"${ROPT[2]}"* ]]; then
+				CATEGORIES="$CATEGORIES,${ROPT[2]}"
+			fi
+                done
+		IFS=', ' read -r -a CTG <<< "$CATEGORIES"
+		for i in ${!CTG[@]};do
+			if [[ "$i" != "0" ]]; then
+				echo -e "\t${CTG[$i]}: "
+				echo -n -e "\t\t"
+				for RADIO in $RADIOS;do
+					IFS=', ' read -r -a ROPT <<< "$RADIO"
+					if [[ "${ROPT[2]}" == "${CTG[$i]}" ]]; then
+						echo -n " ${ROPT[0]}"
+					fi
+				done
+				echo ""
+			fi
+			echo ""
+		done
 	fi
 else
 	echo "radio.lst is missing, creating one..."
