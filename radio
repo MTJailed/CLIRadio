@@ -20,6 +20,7 @@ if [[ -e $RADIOFILE ]]; then
 			echo -e "\t[->]: forward"
 			echo -e "\t[qq]: quit"
 			mplayer "$URL" > /dev/null 2>&1
+			exit 1;
 		fi
 	done
 	if [[ "$1" == "$ARG" ]]; then
