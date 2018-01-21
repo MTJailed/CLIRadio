@@ -1,5 +1,10 @@
 #!/bin/bash
 RADIOFILE='radio.lst'
+if [[ "$(command -v mplayer)" == "" ]]; then
+	echo "This program depends on mplayer."
+	echo "Please install mplayer."
+	exit -1;
+fi
 if [[ -e $RADIOFILE ]]; then
 	RADIOS="$(cat $RADIOFILE)"
 	for RADIO in $RADIOS; do
@@ -8,6 +13,12 @@ if [[ -e $RADIOFILE ]]; then
 		ARGS="$ARGS $ARG"
 		URL="${RADIOOPT[1]}"
 		if [[ "$1" == "$ARG" ]]; then
+			echo "[Listening to $ARG]"
+			echo ""
+			echo -e "\t[space]: pause"
+			echo -e "\t[<-]: back"
+			echo -e "\t[->]: forward"
+			echo -e "\t[qq]: quit"
 			mplayer "$URL" > /dev/null 2>&1
 		fi
 	done
